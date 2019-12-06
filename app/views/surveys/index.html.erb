@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Questions</th>
+      <th>Answer category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.survey_question%></td>
+        <td><%= q.answer_category%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr>    
+      <th>id</th>
+      <th>Answers Category</th>
+      <th>Answers</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.answer_category%></td>
+        <td><%= q.survey_answer_option%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr>    
+      <th>survey id</th>
+      <th>survey code</th>
+      <th>survey desc</th>
+      <th>question id</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @surveys.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.survey_code%></td>
+        <td><%= q.survey_desc%></td>
+        <td><%= q.question_id%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>

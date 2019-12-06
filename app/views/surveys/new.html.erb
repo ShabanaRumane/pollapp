@@ -1,0 +1,42 @@
+<h1>New Survey</h1>
+
+<%= form_with scope: :survey, url: surveys_path, local: true do |form| %>
+ 
+
+<div class="field">
+  <%= form.label :survey_code%>
+  <%= form.text_field :survey_code%>
+</div>
+<div class="field">
+  <%= form.label :survey_desc%>
+  <%= form.text_field :survey_desc%>
+</div>
+
+<div class="dropdown">
+  <%= form.label :question_id %>
+  <% if false %>
+  >>>>>This is a comment block
+  collection_select(object, method, collection, value_method, text_method)
+  * object - is the object that needs to be saved - here 'Survey' which is defined in the form_with hence ommitted
+  * method - is what field you want to save - here question_id
+  * collection - is which model instance you want to source your drop down from
+  * value_method - this is what needs to be saved in the 'method' defined in this         method - here need to save id from question into question_id of the survey 
+  * text_method - what should you see in the dropdown.
+  >>>>>
+  <% end %>
+ 
+  <%= form.collection_select(:question_id,  Question.all, :id, :survey_question, {}, {:multiple => true, :width => 2})%> 
+</div>
+
+<% if false %>
+<div class="dropdown">
+  <%= form.label :question_id %>
+  <%= form.collection_select(:question_id,  Question.all, :id, :survey_question, {:prompt => 'Select a question'})%> 
+</div>
+<% end %>
+
+ <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
