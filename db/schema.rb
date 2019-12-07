@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_040341) do
+ActiveRecord::Schema.define(version: 2019_12_06_150420) do
+
+  create_table "answer_categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answer_options", force: :cascade do |t|
     t.string "survey_answer_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "answer_category"
+    t.string "ans_category"
+    t.integer "answer_category_id"
+    t.index ["answer_category_id"], name: "index_answer_options_on_answer_category_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -33,7 +41,9 @@ ActiveRecord::Schema.define(version: 2019_12_06_040341) do
     t.string "survey_question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "answer_category"
+    t.string "ans_category"
+    t.integer "answer_category_id"
+    t.index ["answer_category_id"], name: "index_questions_on_answer_category_id"
   end
 
   create_table "shops", force: :cascade do |t|

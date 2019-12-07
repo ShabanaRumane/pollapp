@@ -7,10 +7,13 @@
   <%= form.label :survey_code%>
   <%= form.text_field :survey_code%>
 </div>
+
 <div class="field">
   <%= form.label :survey_desc%>
   <%= form.text_field :survey_desc%>
 </div>
+
+
 
 <div class="dropdown">
   <%= form.label :question_id %>
@@ -27,13 +30,6 @@
  
   <%= form.collection_select(:question_id,  Question.all, :id, :survey_question, {}, {:multiple => true, :width => 2})%> 
 </div>
-
-<% if false %>
-<div class="dropdown">
-  <%= form.label :question_id %>
-  <%= form.collection_select(:question_id,  Question.all, :id, :survey_question, {:prompt => 'Select a question'})%> 
-</div>
-<% end %>
 
  <div class="actions">
     <%= form.submit %>

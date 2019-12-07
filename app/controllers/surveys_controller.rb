@@ -4,6 +4,7 @@ class SurveysController < ApplicationController
     @questions = Question.all
     @answers = AnswerOption.all
     @surveys = Survey.all
+    @aq = AnswerCategory.all
   end
 
 

@@ -3,8 +3,26 @@
   <thead>
     <tr>
       <th>id</th>
+      <th>Answer category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aq.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.category%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
       <th>Questions</th>
       <th>Answer category</th>
+      <th>Answer category id</th>
     </tr>
   </thead>
   <tbody>
@@ -12,7 +30,8 @@
       <tr>
         <td><%= q.id%></td>
         <td><%= q.survey_question%></td>
-        <td><%= q.answer_category%></td>
+        <td><%= q.ans_category%></td>
+        <td><%= q.answer_category_id%></td>
       </tr>
     <% end%>
   </tbody>
@@ -22,6 +41,7 @@
   <thead>
     <tr>    
       <th>id</th>
+      <th>Answers Category id</th>
       <th>Answers Category</th>
       <th>Answers</th>
 
@@ -31,7 +51,8 @@
     <% @answers.each do |q| %>
       <tr>
         <td><%= q.id%></td>
-        <td><%= q.answer_category%></td>
+        <td><%= q.answer_category_id%></td>
+        <td><%= q.ans_category%></td>
         <td><%= q.survey_answer_option%></td>
       </tr>
     <% end%>
