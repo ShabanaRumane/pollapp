@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   get 'newpage', to: "home#newpage", as: 'newpage'
   #match '/reversestring' => 'home#reversestring', via: :get
   
-  resources :surveys do
-    resources :questions  
-  end
+  resources :surveys
 
   resources :feedbacks
   

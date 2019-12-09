@@ -20,14 +20,54 @@ class HomeController < AuthenticatedController
         @orders_qty[lineitem.product_id] += lineitem.quantity
       end
     end  
+    #@chart = Feedback.joins(:answer_option, :survey)#.select(:survey_question, :survey_answer_option)
+    # @chart = (
+    #           (
+    #             Survey.select(:'questions.survey_question',:id).joins(:question)
+    #           ).
+    #           select(:survey_question,:id,:'feedbacks.answer_option_id').joins(:feedback)
+    #         ).select(:survey_question,:id,:answer_option_id,:'answer_options.survey_answer_option').joins(:answer_option)
+    #@chart=Feedback.select(:'surveys.question_id', :survey_id, :answer_option_id).joins(:survey).
+     #       select(:'questions.survey_question', :question_id, :survey_id, :answer_option_id ).joins(:question).
+      #      select(:survey_question, :question_id, :survey_id, :answer_option_id, #:'answer_options.survey_answer_option').joins(:answer_options)
+    #@chart=AnswerOption.select(:'feedbacks.answer_option_id', :'feedbacks.survey_id', :survey_answer_option).joins(:feedbacks).select(:'surveys.question_id', :'feedbacks.answer_option_id', :'feedbacks.survey_id', :survey_answer_question).joins(:surveys).select(:'questions.survey_question', :'surveys.question_id', :'feedbacks.answer_option_id', :'feedbacks.survey_id', :survey_answer_question).joins(:questions)     
 
+    sql = "SELECT * FROM
+            feedbacks fb,
+            answer_options ao,
+            surveys s,
+            questions q
+            WHERE fb.survey_id = s.id
+            AND fb.answer_option_id = ao.id
+            AND s.question_id = q.id" 
     
+    #@chart = ActiveRecord::Base.connection.execute(sql)
+    @sql_result=Feedback.connection.select_all(sql)
+
+    #puts @sql_result.columns
+    puts @sql_result.length
+    @chart=Hash.new()
+    @sql_result.each do |row|
+      puts row['survey_question'] + " " + row['survey_answer_option']
+      if @chart.key?(row['survey_question'])
+        @chart[row['survey_question']][row['survey_answer_option']]+=1
+      else
+        @chart[row['survey_question']]=Hash.new(0)
+        @chart[row['survey_question']][row['survey_answer_question']]=1
+      end
+    end
+    #@fbquestions = Question.joins(:surveys).select(:survey_question, :answer_category_id, :survey_code, :question_id,:id)
+    puts "List of questions:"
+    puts @chart.keys
+    @chart.keys.each do |q|
+      puts q + ":" + @chart[q].keys.to_s
+      @chart[q].except(nil).keys.each do |ans|
+        puts "  " + ans.to_s + " = " + @chart[q][ans].to_s
+      end
+    end
   end
+
   def newpage
 
-  end
-  def reversestring
-    #render :json => params[:key]
-    render text: 'Thank you!'
   end
 end

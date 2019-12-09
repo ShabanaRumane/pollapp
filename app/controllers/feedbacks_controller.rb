@@ -5,7 +5,7 @@ class FeedbacksController < ApplicationController
   end
   
   def new
-    @fbquestions = Question.joins(:surveys).select(:survey_question, :answer_category_id, :survey_code, :question_id,:id)
+    @fbquestions = Question.select(:survey_question, :answer_category_id, :'surveys.survey_code', :'surveys.question_id',:'surveys.id').joins(:surveys)
   end
 
   def create

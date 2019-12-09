@@ -1,0 +1,29 @@
+.home {
+  #charts {
+    border-collapse: collapse;
+    margin-right: 10px;
+    padding: 5px;
+    clear:both;
+  }
+  #pie {
+    width: 300px; 
+    height: 250px;
+    border: 1px solid black;
+    margin-right: 10px;
+    padding: 5px;
+    float: left;
+  }
+  table {
+    border: 5px solid black;
+    // border-collapse: collapse; 
+  }
+  table th {
+    padding: 5px;
+    vertical-align: top;
+    text-align: left;
+  }
+  table tr td {
+    padding: 5px;
+    vertical-align: top;
+  }
+}
