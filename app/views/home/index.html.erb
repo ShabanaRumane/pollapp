@@ -6,7 +6,7 @@
   </script>
 <% end %>
 
-
+<p id="notice"><%= notice %></p>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,16 @@
           <a class="dropdown-item" href="/surveys">View Surveys</a>
           <a class="dropdown-item" href="/surveys/new">Add new Survey</a>
           <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Questions and Answers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/questions/new">Import questions</a>
+          <a class="dropdown-item" href="/questions">View available Questions and Answers</a>
+          <div class="dropdown-divider"></div>          
         </div>
       </li>
       <li class="nav-item">
@@ -59,11 +68,6 @@
       </td>
     </tr>
   <% end %>
-          
-      
-    
-    
-
 </table>
 
 

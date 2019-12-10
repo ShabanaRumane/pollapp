@@ -28,7 +28,7 @@
   >>>>>
   <% end %>
  
-  <%= form.collection_select(:question_id,  Question.all, :id, :survey_question, {}, {:multiple => true, :width => 2})%> 
+  <%= form.collection_select(:question_id,  @questions, :id, :survey_question, {}, {:multiple => true, :width => 2})%> 
 </div>
 
  <div class="actions">

@@ -1,5 +1,8 @@
 class QuestionsController < AuthenticatedController
   def index
+    @questions = Question.all
+    @answers = AnswerOption.all
+    @aq = AnswerCategory.all
   end
   
   def new

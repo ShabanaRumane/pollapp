@@ -1,0 +1,58 @@
+<hr>
+<h2> Answer Category </h2>
+<table>
+  <thead>
+    <tr>    
+      <th>Answer Category id</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aq.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.category%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<h2> Questions </h2>
+<table>
+  <thead>
+    <tr>    
+      <th>Questions id</th>
+      <th>Questions</th>
+      <th>Answer Category id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.survey_question%></td>
+        <td><%= q.answer_category_id%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<h2> Answer Options </h2>
+<table>
+  <thead>
+    <tr>    
+      <th>Answer id</th>
+      <th>Answer Category id</th>
+      <th>Answer options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.answer_category_id%></td>
+        <td><%= q.survey_answer_option%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
