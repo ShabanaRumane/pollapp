@@ -20,3 +20,60 @@
 </table>
 <li><%= link_to 'To Dashboard Page', root_path %></li>
 <li><%= link_to 'New Survey', new_survey_path %></li>
+<hr>
+<table>
+  <thead>
+    <tr>    
+      <th>id</th>
+      <th>cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aq.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.category%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr>    
+      <th>id</th>
+      <th>questions</th>
+      <th>ans cat id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.survey_question%></td>
+        <td><%= q.answer_category_id%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr>    
+      <th>id</th>
+      <th>ans cat id</th>
+      <th>ans</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each do |q| %>
+      <tr>
+        <td><%= q.id%></td>
+        <td><%= q.answer_category_id%></td>
+        <td><%= q.survey_answer_option%></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<br>
+<br>

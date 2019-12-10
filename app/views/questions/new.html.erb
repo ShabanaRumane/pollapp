@@ -1,28 +1,7 @@
-<%= form_with model: @question do |form| %>
-  
-  <div class="field">
-    <%= form.label :survey_question %>
-    <%= form.text_field :survey_question %>
-    
-    
+<div>
+    <h4>Import Transaction data! </h4>
+    <%= form_tag import_questions_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import from file" %>
+    <% end %>
   </div>
-
-  <div class="dropdown">
-  <%= form.label :answer_category_id %>
-  <%= a=form.collection_select(:answer_category_id ,  @ans_cat, :id, :category, :prompt => true)%> 
-</div>
-
-  
-
-
-
-  <div class="display">
-    <%= form.label a%>
-
-  </div>
-
- <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end%>

@@ -32,3 +32,17 @@
 # AnswerCategory.create!(category: '1-5 - 5Best')
 # AnswerCategory.create!(category: 'Yes/No')
 # AnswerCategory.create!(category: 'find us where')
+# AnswerCategory.where(id: 9).delete_all
+# AnswerCategory.where(id: 10).delete_all
+# AnswerOption.where(id: 15).delete_all
+# AnswerOption.where(id: 16).delete_all
+# AnswerOption.where(id: 17).delete_all
+# AnswerOption.where(id: 18).delete_all
+# AnswerOption.where(id: 19).delete_all
+# AnswerOption.where(id: 20).delete_all
+# AnswerOption.where(id: 21).delete_all
+# AnswerOption.where(id: 22).delete_all
+# AnswerOption.where(id: 23).delete_all
+# Question.where(id: 5).delete_all
+# Question.where(id: 6).delete_all
+#User.where(age: 20).destroy_all
