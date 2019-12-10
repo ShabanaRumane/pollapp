@@ -1,10 +1,11 @@
-class SurveysController < ApplicationController
+class SurveysController < AuthenticatedController
   
   def index
     @questions = Question.all
     @answers = AnswerOption.all
     @surveys = Survey.all
     @aq = AnswerCategory.all
+    @q = Question.select(:survey_question, :answer_category_id, :'surveys.survey_code', :'surveys.survey_desc',:'surveys.question_id',:'surveys.id').joins(:surveys)
   end
 
 

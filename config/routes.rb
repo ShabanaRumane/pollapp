@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  #get 'feedback/new'
+  
   #get 'feedback/index'
   root :to => 'home#index'
+  #get 'feedback/new'
   mount ShopifyApp::Engine, at: '/'
   get 'newpage', to: "home#newpage", as: 'newpage'
   #match '/reversestring' => 'home#reversestring', via: :get
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :surveys
 
   resources :feedbacks
+  resources :questions
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

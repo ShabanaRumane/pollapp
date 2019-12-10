@@ -1,0 +1,67 @@
+
+<% if false %>
+############# Comment start #################
+
+<%= form_with scope: @tempfb, url: feedbacks_path, local: true do |form| %>
+  <%= puts "############# #{@fbquestions}"%>
+
+
+  <% @fbquestions.each do |q| %>
+
+    <div class="field">
+      <%= form.label q.survey_question%>
+      <%= form.collection_select(:answer_option_id,  AnswerOption.where(answer_category_id: answer_category_id), :id, :survey_answer_option, {}, {})%> 
+      <%= hidden_field_tag :survey_id, q.id %>
+    </div>
+  <% end %>
+  
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
+
+<%= form_with url: "/feedbacks" do |form| %>
+  <% @qid = 0 %>
+  <% @fbquestions.each do |q| %>
+    <%= form.label q.survey_question%>
+    <% @ans = AnswerOption.where(answer_category_id: q.answer_category_id) %><br>
+    <% @ans.each do |a| %>
+        <%= radio_button_tag "feedbacks["+@qid.to_s+"][response]", a.id%> <%= a.survey_answer_option%><br>
+    <% end %>
+    <% @qid += 1 %>
+
+  <% end %>
+  
+  <input type="submit" value="Submit">
+<% end %>
+<label for="q" <%=@qid%>> <%= q.survey_question%></label>
+############# Comment start #################
+<% end %>
+
+<body>
+<form id="fb-form" action="/feedbacks" method="post"> 
+<input type="hidden" name="authenticity_token" value="dummy" />
+  <label>hello</label>
+  <% @fbquestions.each do |q| %>  
+    <div id="blk">  
+    <label for="q"> <%= q.survey_question%></label>
+    <% @ans = get_answer_options(q.answer_category_id) %><br>    
+    <% @ans.each do |a| %>
+      <%= radio_button_tag "feedbacks["+q.id.to_s+"][response]", a.id%> <%= a.survey_answer_option%><br>
+      <%= hidden_field_tag '@customer_id', params[:id] %>
+    <% end %>   
+    <br>
+    </div>
+  <% end %>
+
+  <br>
+  <input type="submit" value="Submit">
+
+ 
+</form>
+</body>

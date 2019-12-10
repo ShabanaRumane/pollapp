@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
   
   def new
     @fbquestions = Question.select(:survey_question, :answer_category_id, :'surveys.survey_code', :'surveys.question_id',:'surveys.id').joins(:surveys)
+
   end
 
   def create
@@ -18,4 +19,10 @@ class FeedbacksController < ApplicationController
     end
     redirect_to '/feedbacks'
   end
+
+  def get_answer_options(ans_category_id)
+    @ans = AnswerOption.where(answer_category_id: ans_category_id)
+  end
+  helper_method :get_answer_options
+
 end

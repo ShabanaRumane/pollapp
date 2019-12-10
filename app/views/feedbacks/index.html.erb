@@ -1,21 +1,3 @@
-<h2> Why are you here !!!Thank you for providing feedback!! please close the window. </h2>
+<h2> Thank you for providing feedback!! </h2>
+<h2> Please close the window. </h2>
 
-<table>
-  <thead>
-    <tr>    
-      <th>question_id, </th>
-      <th>answer_option_id</th>
-      <th>customer_id</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <% @fb.each do |q| %>
-      <tr>
-        <td><%= q.survey_id %></td>
-        <td><%= q.answer_option_id %></td>
-        <td><%= q.customer_id %></td>
-      </tr>
-    <% end%>
-  </tbody>
-</table>
