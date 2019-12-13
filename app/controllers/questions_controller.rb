@@ -20,5 +20,4 @@ class QuestionsController < AuthenticatedController
     #my_import(params[:file],current_user.id)
     redirect_to root_url, notice: "Successfully Imported Questions Data!!!"
   end
-
 end
