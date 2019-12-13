@@ -47,6 +47,7 @@ class HomeController < AuthenticatedController
     #puts @sql_result.columns
     puts @sql_result.length
     @chart=Hash.new()
+    # creates a hash @chart for the charts. @chart[question][[answer][answer count]] => hash[key,value=[key,value]]
     @sql_result.each do |row|
       puts row['survey_question'] + " " + row['survey_answer_option']
       if @chart.key?(row['survey_question'])
@@ -57,17 +58,15 @@ class HomeController < AuthenticatedController
       end
     end
     #@fbquestions = Question.joins(:surveys).select(:survey_question, :answer_category_id, :survey_code, :question_id,:id)
-    puts "List of questions:"
-    puts @chart.keys
-    @chart.keys.each do |q|
-      puts q + ":" + @chart[q].keys.to_s
-      @chart[q].except(nil).keys.each do |ans|
-        puts "  " + ans.to_s + " = " + @chart[q][ans].to_s
-      end
-    end
+    # puts "List of questions:"
+    # puts @chart.keys
+    # @chart.keys.each do |q|
+    #   puts q + ":" + @chart[q].keys.to_s
+    #   @chart[q].except(nil).keys.each do |ans|
+    #     puts "  " + ans.to_s + " = " + @chart[q][ans].to_s
+    #   end
+    # end
   end
 
-  def newpage
 
-  end
 end

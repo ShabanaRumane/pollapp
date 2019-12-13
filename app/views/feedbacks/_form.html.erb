@@ -2,11 +2,11 @@
 <body>
 <form id="fb-form" action="/feedbacks" method="post"> 
 <input type="hidden" name="authenticity_token" value="dummy" />
-<% @cnt = 0 %>
+
   <% @fbquestions.each do |q| %>  
     <div id="blk">  
     <label for="q"> <%= q.survey_question%></label>
-    <%= hidden_field_tag @cnt += 1 %>
+
     <% @ans = get_answer_options(q.answer_category_id) %><br>    
     <% @ans.each do |a| %>
       <%= radio_button_tag "feedbacks["+q.id.to_s+"][response]", a.id%> <%= a.survey_answer_option%><br>
@@ -15,7 +15,7 @@
     <br>
     </div>
   <% end %>
-  <%= hidden_field_tag 'cnt', @cnt %>
+
   <br>
   <input type="submit" value="Submit">
 
