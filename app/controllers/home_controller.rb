@@ -57,7 +57,7 @@ class HomeController < AuthenticatedController
         @chart[row['survey_question']][row['survey_answer_question']]=1
       end
     end
-    #@fbquestions = Question.joins(:surveys).select(:survey_question, :answer_category_id, :survey_code, :question_id,:id)
+   
     # puts "List of questions:"
     # puts @chart.keys
     # @chart.keys.each do |q|
