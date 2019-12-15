@@ -41,7 +41,7 @@ class HomeController < AuthenticatedController
             AND fb.answer_option_id = ao.id
             AND s.question_id = q.id" 
     
-    #@chart = ActiveRecord::Base.connection.execute(sql)
+    
     @sql_result=Feedback.connection.select_all(sql)
 
     #puts @sql_result.columns

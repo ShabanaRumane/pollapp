@@ -12,16 +12,15 @@ class FeedbacksController < ApplicationController
   def create
     puts "Got params"
     puts params[:@customer_id]
-    if (defined? params[:feedbacks])
-      # puts "no feedbacks!!!!!!!!!!!"
-      # redirect_to request.referrer, flash: {notice: "Successfully checked in"}
-    else
-        params[:feedbacks].keys.each do |newq|
+    if params.has_key?(:feedbacks)
+      params[:feedbacks].keys.each do |newq|
         puts "Response to " + newq + " is " + params[:feedbacks][newq]["response"]
         @new_fb=Feedback.new({ :survey_id => newq, :answer_option_id => params[:feedbacks][newq]["response"],:customer_id => params[:@customer_id]})
         @new_fb.save
       end
-      
+    else
+      puts "no feedbacks!!!!!!!!!!!"
+      # redirect_to request.referrer, flash: {notice: "Successfully checked in"}
     end
     redirect_to '/feedbacks'
   end

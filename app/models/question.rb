@@ -8,6 +8,7 @@ class Question < ApplicationRecord
 
   def self.my_import(file)    
     CSV.foreach(file.path, headers:true) do |row|
+      # 1st column is question, 2nd is category and remaining is answer options
       if row.length > 2 
         AnswerCategory.create({
           :category => row[1]})
@@ -18,7 +19,7 @@ class Question < ApplicationRecord
           :survey_question => row[0],
           :answer_category_id => anscatid[0]
         })
-        
+        # Looping from 3 column till end to store answer options
         for i in 2..row.length-1 do
           AnswerOption.create({
             :survey_answer_option => row[i],
